@@ -1,0 +1,49 @@
+<!doctype html>
+<title>Test</title>
+<meta charset="utf-8">
+
+<body style="margin: 200px 350px 200px 350px">
+    <div style="background: grey; border: 3px solid red; padding: 10px 35px 0px 35px; width: 700px; height: 420px;">
+        <h1 style="color: blue; text-align: center;">BANG DIEM CUA EM</h1>
+        <div style="margin: 15px 0px;"> <span style="display: inline-block; width: 115px; font-size: 20px;">Semester1:</span> <input id="s1" type="text" style="width: 520px; height: 35px; font-size: 20px;"> </div>
+        <div style="margin: 15px 0px;"> <span style="display: inline-block; width: 115px; font-size: 20px;">Semester2:</span> <input id="s2" type="text" style="width: 520px; height: 35px; font-size: 20px;"> </div>
+        <div style="margin: 15px 0px;"> <span style="display: inline-block; width: 115px; font-size: 20px;">Year:</span> <select id="year" style="width: 70px; height: 35px; color: red; font-size: 20px;"> <option>1</option> <option>2</option></select> </div>
+        <div style="margin: 15px 0px;"> <span style="display: inline-block; width: 115px; font-size: 20px;">Summarise:</span> <input id="sum" type="text" disabled="true" style="width: 520px; height: 35px; font-size: 20px;"> </div>
+        <div id="score" style="color: red; font-size: 40px; margin-top: 20px;">
+        </div>
+        <div style="text-align: center; margin-top: 45px;">
+            <button type="button" onclick="ok()" style="font-size: 20px; padding: 5px 15px; margin-right: 60px;">OK</button>
+            <button type="button" onclick="clearAll()" style="font-size: 20px; padding: 5px 15px;">Cancel</button>
+        </div>
+    </div>
+
+<script>
+var s1El = document.getElementById("s1"),
+    s2El = document.getElementById("s2"),
+    yearEl = document.getElementById("year"),
+    sumEl = document.getElementById("sum"),
+    scoreEl = document.getElementById("score");
+
+function rate(n) {
+    return n >= 9 ? "Xuất sắc" : n >= 8 ? "Giỏi" : n >= 5 ? "Trung bình" : "yếu";
+}
+
+function ok() {
+    var s1 = parseFloat(s1El.value), s2 = parseFloat(s2El.value);
+    if (isNaN(s1) || isNaN(s2)) {
+        sumEl.value = "";
+        scoreEl.textContent = "Điền đủ thông tin";
+        return;
+    }
+    var avg = yearEl.value === "1" ? (s1 + s2) / 2 : (s1 + s2 * 2) / 3;
+    sumEl.value = avg.toFixed(2);
+    scoreEl.textContent = rate(avg);
+}
+
+function clearAll() {
+    s1El.value = s2El.value = sumEl.value = "";
+    yearEl.value = "1";
+    scoreEl.textContent = "";
+}
+</script>
+</body>
