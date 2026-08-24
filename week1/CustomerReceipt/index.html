@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receipt System</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <b>Fullname_Customer</b>
+  <br>
+  <input type="text" id="customer">
+  <br>
+  <b>ID_Pro</b>
+  <br>
+  <input type="text" id="productId">
+  <br>
+  <b>Name_Pro</b>
+  <br>
+  <input type="text" id="productName">
+  <br>
+  <b>Quantity_Pro</b>
+  <br>
+  <input type="text" id="productQuantity">
+  <br>
+  <b>Price_Pro</b>
+  <br>
+  <input type="text" id="productPrice">
+  <br>
+  <button onclick="save()">Save</button>
+  <button onclick="show()">Show</button>
+  <button onclick="reset()">Reset</button>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Auto_Increment</th>
+        <th>Customer_Name</th>
+        <th>ID_Pro</th>
+        <th>Name_Pro</th>
+        <th>Quantity_Pro</th>
+        <th>Price_Pro</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="tbl"></tbody>
+  </table>
+</body>
+</html>

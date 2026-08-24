@@ -1,0 +1,22 @@
+* {
+    margin: 5px 0px 5px 0px;
+}
+
+body {
+    margin: 15px;
+}
+
+button {
+    color: red;
+    background: white;
+}
+
+table {
+    border: 3px solid gray;
+    background: cyan;
+}
+
+.thead-dark th {
+    border: 2px solid white;
+    box-shadow: 0px 0px 2px black;
+}
