@@ -1,0 +1,154 @@
+:root {
+    --carbon-black: #1c1c1cff;
+    --alabaster-grey: #daddd8ff;
+    --soft-linen: #ecebe4ff;
+    --platinum: #eef0f2ff;
+    --ghost-white: #fafaffff;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: var(--soft-linen);
+    color: var(--carbon-black);
+}
+
+.page {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.panel {
+    background: var(--ghost-white);
+    border: 1px solid var(--alabaster-grey);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 0 0 20px;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--carbon-black);
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--ghost-white);
+}
+
+th, td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--alabaster-grey);
+    text-align: left;
+}
+
+th {
+    background: var(--platinum);
+    color: var(--carbon-black);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+tbody tr:hover {
+    background: var(--platinum);
+}
+
+.empty-message {
+    color: var(--carbon-black);
+    font-style: italic;
+}
+
+.container {
+    max-width: 400px;
+    margin: 60px auto;
+    background: var(--ghost-white);
+    border: 1px solid var(--alabaster-grey);
+    border-radius: 12px;
+    padding: 32px;
+}
+
+h2 {
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 0 0 24px;
+    color: var(--carbon-black);
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    font-weight: 800;
+    color: var(--carbon-black);
+}
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+    font-weight: 400px;
+    border: 1px solid var(--alabaster-grey);
+    border-radius: 8px;
+    background: var(--platinum);
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--carbon-black);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #50af51;
+    color: var(--ghost-white);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+h3 {
+    margin: 24px 0 8px;
+    font-size: 1rem;
+    color: var(--carbon-black);
+}
+
+p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+    color: var(--carbon-black);
+}
+
+#perimeterResult {
+    margin-top: 15px;
+    padding: 6px;
+    background: var(--platinum);
+    border-left: 4px solid #50af51;
+    border-radius: 4px;
+}
+
+#areaResult {
+    margin-top: 15px;
+    padding: 6px;
+    background: var(--platinum);
+    border-left: 4px solid #50af51;
+    border-radius: 4px;
+}

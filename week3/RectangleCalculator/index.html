@@ -1,0 +1,26 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Tính Chu vi & Diện tích hình chữ nhật</h2>
+
+        <label for="length">Chiều dài:</label>
+        <input type=”number” id="length">
+
+        <label for="width">Chiều rộng:</label>
+        <input type=”number” id="width">
+
+        <button onclick="runCalculation()">Tính toán</button>
+
+        <h3>Kết quả:</h3>
+
+        <p hidden=true id="perimeterResult"></p>
+        <p hidden=true id="areaResult"></p>
+    </div>
+
+    <script src="callback-calculate-rec.js"></script>
+</body>
