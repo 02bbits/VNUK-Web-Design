@@ -1,0 +1,84 @@
+:root {
+    --orange: #f15b24;
+    --dark-blue: #102e57;
+    --light-blue: #e5edf7;
+    --gray: #64748b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--dark-blue);
+    background: #f7f9fc;
+}
+
+a { color: inherit; text-decoration: none; }
+button { border: 0; cursor: pointer; font: inherit; }
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+/* Header */
+.header { background: white; border-bottom: 1px solid #ddd; }
+.header-content { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 25px; }
+.logo { font-size: 23px; font-weight: bold; }
+.logo-mark { color: var(--orange); margin-right: 5px; }
+.nav { display: flex; gap: 25px; }
+.nav a:hover { color: var(--orange); }
+
+/* Hero */
+.hero {
+    padding: 55px 0;
+    color: white;
+    background: linear-gradient(90deg, rgba(9, 31, 62, .86), rgba(9, 31, 62, .38)), url("https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1800&q=85") center / cover;
+}
+.hero h1 { font-size: 38px; margin-bottom: 10px; }
+.hero p { max-width: 420px; margin-bottom: 20px; }
+.hero-cta { display: inline-block; padding: 10px 16px; color: white; background: var(--orange); border-radius: 3px; font-weight: bold; font-size: 13px; }
+.hero-cta:hover, .btn-book:hover { background: #d94c1b; }
+
+/* Tour form */
+.tour-form-section { padding: 35px 0 0; }
+.tour-form-section h2 { margin-bottom: 15px; font-size: 24px; }
+.tour-form { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; padding: 18px; background: white; border: 1px solid #dce5ef; border-radius: 5px; }
+.tour-form label { display: flex; flex-direction: column; gap: 5px; color: var(--dark-blue); font-size: 12px; font-weight: bold; }
+.tour-form input { width: 100%; padding: 9px; border: 1px solid #cbd5e1; border-radius: 3px; font: inherit; font-size: 12px; }
+.form-buttons { display: flex; align-items: end; gap: 8px; }
+.form-buttons button { min-width: 90px; padding: 10px 14px; border-radius: 5px; font-size: 12px; font-weight: bold; transition: background .2s ease, transform .2s ease; }
+.form-buttons button:hover { transform: translateY(-1px); }
+.save-button { color: white; background: var(--orange); box-shadow: 0 3px 8px rgba(241, 91, 36, .25); }
+.save-button:hover { background: #d94c1b; }
+.cancel-button { color: var(--dark-blue); background: #e5edf7; }
+.cancel-button:hover { background: #d5e1ef; }
+.edit-button { color: white; background: var(--dark-blue); }
+.edit-button:hover { background: #1b477e; }
+.delete-button { color:white; background: #9f2d2d; }
+.delete-button:hover { background: #7e2424; }
+.form-message { min-height: 22px; padding-top: 6px; color: var(--gray); font-size: 12px; }
+
+/* Tours */
+.products-section { padding: 65px 0 80px; }
+.section-header { margin-bottom: 25px; }
+.section-header h2 { font-size: 30px; }
+.section-header p { color: var(--gray); }
+.product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.product-card { display: flex; flex-direction: column; overflow: hidden; background: var(--light-blue); border-radius: 4px; box-shadow: 0 8px 20px rgba(16, 46, 87, .1); }
+.product-card:hover { transform: translateY(-3px); }
+.product-image { width: 100%; aspect-ratio: 2.15 / 1; object-fit: cover; background: #dce5ef; }
+.product-content { flex: 1; padding: 10px; }
+.product-label { margin-bottom: 4px; font-size: 12px; }
+.product-title { margin-bottom: 3px; font-size: 13px; }
+.product-desc, .product-dates { color: var(--gray); font-size: 11px; }
+.product-price { margin-top: 5px; font-size: 13px; font-weight: bold;}
+.actions { margin-top: auto; }
+.btn-book { width: 100%; padding: 8px; color: white; background: var(--orange); border-radius: 0 0 3px 3px; font-size: 11px; font-weight: bold; }
+.card-buttons { display: flex; gap: 1px; }
+.card-buttons button { flex: 1; padding: 8px; color: white; font-size: 11px; }
+
+
+/* Footer */
+.footer { color: white; background: var(--dark-blue); }
+.footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding: 45px 0; }
+.footer h3, .footer h4 { margin-bottom: 12px; }
+.footer a { display: block; margin-bottom: 7px; }
+.footer-bottom { padding: 18px; border-top: 1px solid #345; color: #aaa; text-align: center; }
