@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Search Results | Bánh ngon mỗi ngày</title>
+	<link href="https://fonts.googleapis.com/css?family=Dosis:300,400" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/assets/dest/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/assets/dest/css/style.css">
+	<link rel="stylesheet" href="/assets/dest/css/huong-style.css">
+</head>
+<body>
+	<%- include('partial/header', { searchQuery }) %>
+	<main class="container home-products search-page">
+		<section class="product-section" aria-labelledby="search-results-heading">
+			<h2 id="search-results-heading">Search Results</h2>
+			<p class="product-count">
+				<% if (searchQuery) { %>
+					<%= totalResults %> results for “<%= searchQuery %>”
+				<% } else { %>
+					Enter a search term to find products.
+				<% } %>
+			</p>
+
+			<% if (results.length) { %>
+				<div class="product-grid">
+					<% results.forEach(product => { %>
+						<%- include('partial/product-card', { product }) %>
+					<% }) %>
+				</div>
+			<% } else if (searchQuery) { %>
+				<p class="search-empty-state">No products matched your search.</p>
+			<% } %>
+
+			<% if (totalPages > 1) { %>
+				<nav class="search-pagination" aria-label="Search result pages">
+					<% if (currentPage > 1) { %>
+						<a class="search-page-button" href="/search?q=<%= encodeURIComponent(searchQuery) %>&amp;page=<%= currentPage - 1 %>" aria-label="Previous page">&lt;</a>
+					<% } else { %>
+						<span class="search-page-button is-disabled" aria-label="Previous page" aria-disabled="true">&lt;</span>
+					<% } %>
+					<% if (currentPage < totalPages) { %>
+						<a class="search-page-button" href="/search?q=<%= encodeURIComponent(searchQuery) %>&amp;page=<%= currentPage + 1 %>" aria-label="Next page">&gt;</a>
+					<% } else { %>
+						<span class="search-page-button is-disabled" aria-label="Next page" aria-disabled="true">&gt;</span>
+					<% } %>
+				</nav>
+			<% } %>
+		</section>
+	</main>
+	<%- include('partial/footer') %>
+	<script src="/assets/dest/js/jquery.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<script src="/assets/dest/js/scripts.min.js"></script>
+</body>
+</html>

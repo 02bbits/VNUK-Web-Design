@@ -1,0 +1,88 @@
+<section class="product-management" id="product-management">
+  <div class="product-management-heading">
+    <h2>Manage Products</h2>
+    <span class="product-count"><%= products.length %> products</span>
+  </div>
+
+  <div class="product-management-grid">
+    <article class="product-admin-card">
+      <h3 id="product-form-heading">Add a product</h3>
+      <form id="product-form" action="/products" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="product-select">Select a product to edit</label>
+          <select class="form-control" id="product-select">
+            <option value="" selected>Add new product</option>
+            <% products.forEach(product => { %>
+              <option value="<%= product._id %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-discount="<%= product.discount * 100 %>" data-category="<%= product.category %>" data-image="<%= product.image %>"><%= product.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="product-name">Name</label>
+          <input class="form-control" id="product-name" name="name" type="text" required maxlength="120">
+        </div>
+        <div class="form-group">
+          <label for="product-price">Price (VND)</label>
+          <input class="form-control" id="product-price" name="price" type="number" min="0" step="1" required>
+        </div>
+        <div class="form-group">
+          <label for="product-discount">Discount (%)</label>
+          <input class="form-control" id="product-discount" name="discount" type="number" min="0" max="100" step="0.01" value="0">
+        </div>
+        <div class="form-group">
+          <label for="product-category">Category</label>
+          <select class="form-control" id="product-category" name="category" required>
+            <option value="New product">New product</option>
+            <option value="Top product">Top product</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label id="product-image-label" for="product-image">Image</label>
+          <input class="form-control" id="product-image" name="image" type="file" accept="image/*" required>
+        </div>
+        <img class="product-admin-image" id="product-image-preview" alt="Current product image" hidden>
+        <div class="product-admin-actions">
+          <button class="btn btn-primary" id="product-submit" type="submit">Add product</button>
+          <button class="btn btn-danger" id="product-delete" type="submit" formmethod="post" formenctype="application/x-www-form-urlencoded" formaction="/products" formnovalidate hidden onclick="return confirm('Delete this product?')">Delete</button>
+        </div>
+      </form>
+    </article>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const selector = document.getElementById('product-select');
+    const form = document.getElementById('product-form');
+    const name = document.getElementById('product-name');
+    const price = document.getElementById('product-price');
+    const discount = document.getElementById('product-discount');
+    const category = document.getElementById('product-category');
+    const image = document.getElementById('product-image');
+    const imageLabel = document.getElementById('product-image-label');
+    const imagePreview = document.getElementById('product-image-preview');
+    const heading = document.getElementById('product-form-heading');
+    const submit = document.getElementById('product-submit');
+    const deleteButton = document.getElementById('product-delete');
+
+    selector.addEventListener('change', () => {
+      const selected = selector.options[selector.selectedIndex];
+      const isEditing = selector.value !== '';
+
+      form.action = isEditing ? `/products/${selector.value}` : '/products';
+      name.value = selected.dataset.name || '';
+      price.value = selected.dataset.price || '';
+      discount.value = selected.dataset.discount || '0';
+      category.value = selected.dataset.category || 'New product';
+      image.value = '';
+      image.required = !isEditing;
+      imageLabel.textContent = isEditing ? 'Replace image (optional)' : 'Image';
+      imagePreview.src = selected.dataset.image || '';
+      imagePreview.hidden = !isEditing;
+      heading.textContent = isEditing ? 'Edit a product' : 'Add a product';
+      submit.textContent = isEditing ? 'Save changes' : 'Add product';
+      deleteButton.hidden = !isEditing;
+      deleteButton.formAction = isEditing ? `/products/${selector.value}/delete` : '/products';
+    });
+  })();
+</script>

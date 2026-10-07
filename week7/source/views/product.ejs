@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title><%= product.name %> | Bánh ngon mỗi ngày</title>
+	<link href="https://fonts.googleapis.com/css?family=Dosis:300,400" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/assets/dest/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/assets/dest/css/style.css">
+	<link rel="stylesheet" href="/assets/dest/css/animate.css">
+	<link rel="stylesheet" href="/assets/dest/css/huong-style.css">
+</head>
+<body>
+	<%- include('partial/header') %>
+
+	<div class="inner-header">
+		<div class="container">
+			<div class="pull-left"><h6 class="inner-title"><%= product.name %></h6></div>
+			<div class="pull-right beta-breadcrumb font-large">
+				<a href="/">Home</a> / <span><%= product.name %></span>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<main class="container product-detail-page">
+		<div class="row">
+			<div class="col-sm-9">
+				<div class="row product-detail-main">
+					<div class="col-sm-5">
+						<img class="product-detail-image" src="<%= product.image %>" alt="<%= product.name %>">
+					</div>
+					<div class="col-sm-7">
+						<p class="product-detail-category"><%= product.category %></p>
+						<h1 class="product-detail-title"><%= product.name %></h1>
+						<p class="product-detail-price">
+							<% if (product.discount > 0) { %>
+								<del><%= product.price.toLocaleString('vi-VN') %> ₫</del>
+							<% } %>
+							<strong><%= Math.round(product.price * (1 - product.discount)).toLocaleString('vi-VN') %> ₫</strong>
+						</p>
+						<p class="product-detail-copy">Freshly prepared with carefully selected ingredients. Enjoy this bakery favorite on its own or share it with someone special.</p>
+						<a class="btn btn-primary" href="/">Continue shopping</a>
+					</div>
+				</div>
+
+				<% if (relatedProducts.length) { %>
+					<section class="product-related-section">
+						<h2>Related Products</h2>
+						<div class="product-grid">
+							<% relatedProducts.forEach(relatedProduct => { %>
+								<%- include('partial/product-card', { product: relatedProduct }) %>
+							<% }) %>
+						</div>
+					</section>
+				<% } %>
+			</div>
+			<aside class="col-sm-3">
+				<h2 class="product-aside-title">Product details</h2>
+				<dl class="product-detail-facts">
+					<dt>Category</dt>
+					<dd><%= product.category %></dd>
+					<dt>Price</dt>
+					<dd><%= Math.round(product.price * (1 - product.discount)).toLocaleString('vi-VN') %> ₫</dd>
+					<% if (product.discount > 0) { %>
+						<dt>Discount</dt>
+						<dd><%= Math.round(product.discount * 100) %>%</dd>
+					<% } %>
+				</dl>
+			</aside>
+		</div>
+	</main>
+
+	<%- include('partial/footer') %>
+	<script src="/assets/dest/js/jquery.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<script src="/assets/dest/vendors/bxslider/jquery.bxslider.min.js"></script>
+	<script src="/assets/dest/js/scripts.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<article class="cake-product">
+  <a class="cake-product-image" href="/products/<%= product._id %>" aria-label="View <%= product.name %>">
+    <img src="<%= product.image %>" alt="<%= product.name %>" loading="lazy">
+    <% if (product.discount > 0) { %>
+      <span class="cake-sale-ribbon">SALE</span>
+    <% } %>
+  </a>
+  <h3 class="cake-product-name"><%= product.name %></h3>
+  <p class="cake-product-price">
+    <% if (product.discount > 0) { %>
+      <del><%= product.price.toLocaleString('vi-VN') %> ₫</del>
+    <% } %>
+    <span><%= Math.round(product.price * (1 - product.discount)).toLocaleString('vi-VN') %> ₫</span>
+  </p>
+  <div class="cake-product-actions">
+    <a class="cake-cart-button" href="#" aria-label="Add <%= product.name %> to cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+    <a class="cake-details-button" href="/products/<%= product._id %>">Details <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+</article>

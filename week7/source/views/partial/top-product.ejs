@@ -1,0 +1,9 @@
+<section class="product-section">
+  <h2>Top Products</h2>
+  <p class="product-count"><%= products.length %> products</p>
+  <div class="product-grid">
+  <% products.forEach(product => { %>
+    <%- include('product-card', { product }) %>
+  <% }) %>
+  </div>
+</section>
