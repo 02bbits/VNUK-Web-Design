@@ -1,0 +1,15 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title><%= title %></title></head><body>
+<h1>Sửa sản phẩm</h1>
+<form method="POST" action="/products/edit/<%= product._id %>">
+  <input name="name" value="<%= product.name %>" required><br>
+  <input name="price" value="<%= product.price %>" type="number" required><br>
+  <select name="categoryId">
+    <option value="">-- Chọn danh mục --</option>
+    <% categories.forEach(c=>{ %><option value="<%= c._id %>" <%= String(product.categoryId)==String(c._id)?'selected':'' %>><%= c.name %></option><% }) %>
+  </select><br>
+  <input name="stock" value="<%= product.stock %>" type="number"><br>
+  <textarea name="description"><%= product.description %></textarea><br>
+  <button type="submit">Cập nhật</button>
+</form>
+<p><a href="/products">⬅ Quay lại</a></p>
+</body></html>

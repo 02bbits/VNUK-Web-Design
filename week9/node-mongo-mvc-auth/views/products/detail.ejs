@@ -1,0 +1,8 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title><%= title %></title></head><body>
+<h1><%= product.name %></h1>
+<p>Giá: <%= product.price %></p>
+<p>Loại: <%= product.categoryId ? product.categoryId.name : 'Không' %></p>
+<p>Tồn kho: <%= product.stock %></p>
+<p>Mô tả: <%= product.description %></p>
+<p><a href="/products">⬅ Quay lại</a></p>
+</body></html>
